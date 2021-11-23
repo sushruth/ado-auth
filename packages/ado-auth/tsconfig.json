@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"noEmit": false,
+		"outFile": "./bin/types",
+		"isolatedModules": false
+	},
+  "include": [
+    "src"
+  ]
+}

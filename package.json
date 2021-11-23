@@ -1,12 +1,12 @@
 {
-  "name": "root",
+  "name": "ado-auth-root",
   "packageManager": "yarn@3.2.0-rc.5",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
-    "@types/node": "^16.11.10",
+    "@types/node": "16.11.10",
     "@types/react": "17.0.36",
     "@types/react-dom": "17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
