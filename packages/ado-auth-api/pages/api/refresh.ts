@@ -1,8 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch, { Headers } from "node-fetch";
-import { respond } from "../lib/respond";
-import { AdoAuthApiResponseTypes, Token } from "../lib/types";
+import { respond } from "../../lib/respond";
+import { AdoAuthApiResponseTypes, Token } from "../../lib/types";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const refreshToken = req.query.token || req.body.token;

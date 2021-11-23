@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SERVER_PORT } from "./lib/constants";
+import { SERVER_PORT } from "../lib/constants";
 import styles from "../styles/Home.module.css";
 import processStyles from "../styles/Process.module.css";
 

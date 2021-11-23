@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { authResultHandler } from "../lib/authResultHandler";
-import { SERVER_PORT } from "../lib/constants";
-import { respond } from "../lib/respond";
-import { AdoAuthApiResponseTypes } from "../lib/types";
+import { authResultHandler } from "../../lib/authResultHandler";
+import { SERVER_PORT } from "../../lib/constants";
+import { respond } from "../../lib/respond";
+import { AdoAuthApiResponseTypes } from "../../lib/types";
 
 const config: Record<string, string | number> = {
   port: SERVER_PORT,
