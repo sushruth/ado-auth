@@ -24,6 +24,9 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 
+      - run: yarn
+        name: "Running yarn once"
+
       - run: yarn workspace ado-auth npm publish
         name: "Building the code"
 
