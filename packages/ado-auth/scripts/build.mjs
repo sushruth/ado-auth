@@ -7,15 +7,13 @@ const packageJson = JSON.parse(readFileSync("./package.json", "utf-8"));
 
 await build({
   plugins: [
-    pnpPlugin({
-      baseDir: "../",
-    }),
+    pnpPlugin(),
   ],
   external: Object.keys(packageJson.dependencies),
   minify: true,
   platform: "node",
   target: ["es2015"],
-  entryPoints: ["src/cli.ts"],
+  entryPoints: ["./src/cli.ts"],
   bundle: true,
   outfile: "./bin/src/cli.js",
 });
