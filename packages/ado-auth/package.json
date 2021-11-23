@@ -5,7 +5,13 @@
 	"license": "MIT",
 	"main": "./bin/src/cli.js",
 	"types": "./bin/types.d.ts",
-	"keywords": ["azure devops", "authenticate", "vsts auth", "ado-auth", "ado auth"],
+	"keywords": [
+		"azure devops",
+		"authenticate",
+		"vsts auth",
+		"ado-auth",
+		"ado auth"
+	],
 	"scripts": {
 		"compile": "node ./scripts/build.mjs",
 		"typegen": "tsc",
