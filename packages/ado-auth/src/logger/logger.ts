@@ -40,16 +40,16 @@ class Logger {
     },
 
     succeed: (text?: string) => {
-      this.debug(`✅ ${text || this._spinner?.text}`);
       if (this.debugEnabled) {
         this._spinner?.stop();
+        this.debug(`✅ ${text || this._spinner?.text}`);
       }
     },
 
     fail: (text?: string) => {
-      this.debug(`❌ ${text || this._spinner?.text}`);
       if (this.debugEnabled) {
         this._spinner?.stop();
+        this.debug(`❌ ${text || this._spinner?.text}`);
       }
     },
   };

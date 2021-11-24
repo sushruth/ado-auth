@@ -8,13 +8,13 @@ export enum PrepareTypes {
 
 export type PrepareReturn =
   | {
-      type: PrepareTypes.refetch;
-      data: TokenStore;
+      type: PrepareTypes.refetch
+      data: TokenStore
     }
   | {
-      type: PrepareTypes.fetch;
+      type: PrepareTypes.fetch
     }
   | {
-      type: PrepareTypes.noop;
-      data: TokenStore;
-    };
+      type: PrepareTypes.noop
+      data: TokenStore
+    }

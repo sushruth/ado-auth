@@ -1,5 +1,5 @@
-import { NextApiResponse } from "next";
-import { AdoAuthApiResponse, AdoAuthApiResponseTypes } from "./types";
+import { NextApiResponse } from 'next'
+import { AdoAuthApiResponse, AdoAuthApiResponseTypes } from './types'
 
 export function respond(
   res: NextApiResponse,
@@ -11,8 +11,8 @@ export function respond(
     case AdoAuthApiResponseTypes.MISSING_SECRET:
     case AdoAuthApiResponseTypes.NO_RESULT:
     case AdoAuthApiResponseTypes.NO_TOKENS:
-      return res.status(500).json(response);
+      return res.status(500).json(response)
     case AdoAuthApiResponseTypes.SUCCESS:
-      return res.status(200).json(response);
+      return res.status(200).json(response)
   }
 }
