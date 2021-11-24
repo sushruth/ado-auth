@@ -1,4 +1,3 @@
-import ora from 'ora'
 import { URL } from 'url'
 import { AdoAuthApiResponse, CliOptions, TokenStore } from '../lib/types'
 import { writeAdoRc } from '../lib/writeAdoRc'
@@ -6,33 +5,28 @@ import { logger } from '../logger/logger'
 import { simpleFetchJson } from './simpleFetch'
 
 export async function refetch(
-	data: TokenStore,
-	rcPath: string,
-	config: CliOptions
+  data: TokenStore,
+  rcPath: string,
+  config: CliOptions
 ) {
-	const url = new URL(config.host)
+  const url = new URL(config.host)
 
-	url.pathname = 'api/refresh'
+  url.pathname = 'api/refresh'
 
-	logger.debug(`Calling ${url.href} to refresh token`)
+  logger.debug(`Calling ${url.href} to refresh token`)
+  logger.spinner.new({ text: 'Refreshing token' })
 
-	const spinner = ora({
-		text: 'Refetching token',
-		prefixText: logger.debugPrefix,
-		isEnabled: logger.debugEnabled,
-	}).start()
+  const result = await simpleFetchJson<AdoAuthApiResponse>(url.href, 'POST', {
+    token: data.refresh_token,
+    port: config.port,
+  })
 
-	const result = await simpleFetchJson<AdoAuthApiResponse>(url.href, 'POST', {
-		token: data.refresh_token,
-		port: config.port,
-	})
-
-	if (result?.code === 'SUCCESS') {
-		writeAdoRc(rcPath, result.body)
-		spinner.succeed('Received refreshed token succesfully.')
-		return result.body
-	} else {
-		spinner.fail('Something went wrong while fetching refresh token')
-		logger.debug(result)
-	}
+  if (result?.code === 'SUCCESS') {
+    writeAdoRc(rcPath, result.body)
+    logger.spinner.succeed('Received refreshed token succesfully.')
+    return result.body
+  } else {
+    logger.spinner.fail('Something went wrong while fetching refresh token')
+    logger.debug(result)
+  }
 }

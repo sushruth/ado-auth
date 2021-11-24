@@ -1,82 +1,95 @@
 import { execSync } from 'child_process'
+import { blue, bold, red } from 'colorette'
 import { logger } from '../logger/logger'
+import { npmString, yarnString } from './constants'
 
 const defaultRegex = /^(https?)?:?\/\/registry\.(yarnpkg|npmjs)\.(com|org).*/i
 
 const commands = {
-	npm: 'npm config get registry',
-	yarn: 'yarn config get registry',
-	yarn2: 'yarn config get npmRegistryServer',
+  npm: 'npm config get registry',
+  yarn: 'yarn config get registry',
+  yarn2: 'yarn config get npmRegistryServer',
 }
 
-function getRegistry(tool: Exclude<keyof typeof commands, 'yarn2'>) {
-	let registry = ''
+type Tool = keyof typeof commands
 
-	let toolToUse: keyof typeof commands = tool
+const toolNames: Record<Tool, string> = {
+  npm: npmString,
+  yarn: yarnString,
+  yarn2: yarnString,
+}
 
-	if (tool === 'yarn') {
-		const version = execSync('yarn -v', { encoding: 'utf8' })?.trim()
-		const match = version.match(/(\d+)\.*/i)
+function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
+  let registry = ''
 
-		if (Number(match?.[1]) >= 2) {
-			toolToUse = 'yarn2'
-		}
-	}
+  let toolToUse: Tool = tool
 
-	try {
-		registry = execSync(commands[toolToUse], {
-			encoding: 'utf8',
-			cwd: process.cwd(),
-		})
-			?.trim()
-			.replace(/^https?:/, '') // remove https
+  if (tool === 'yarn') {
+    const version = execSync('yarn -v', { encoding: 'utf8' })?.trim()
+    const match = version.match(/(\d+)\.*/i)
 
-		if (defaultRegex.test(registry) || /undefined/i.test(registry)) {
-			registry = ''
-		}
-	} catch (error) {
-		logger.debug(
-			`Running "${commands[toolToUse]}" resulted in an error - `,
-			error
-		)
-	}
+    if (Number(match?.[1]) >= 2) {
+      toolToUse = 'yarn2'
+    }
+  }
 
-	if (!registry) {
-		logger.debug(`No custom ${toolToUse} registry found.`)
-	} else {
-		logger.debug(`${toolToUse} config contains this registry -> `, registry)
-	}
+  try {
+    registry = execSync(commands[toolToUse], {
+      encoding: 'utf8',
+      cwd: process.cwd(),
+    })
+      ?.trim()
+      .replace(/^https?:/, '') // remove https
 
-	return registry
+    if (defaultRegex.test(registry) || /undefined/i.test(registry)) {
+      registry = ''
+    }
+  } catch (error) {
+    logger.debug(
+      `Running "${commands[toolToUse]}" resulted in an error - `,
+      error
+    )
+  }
+
+  if (!registry) {
+    logger.debug(`No custom ${toolNames[toolToUse]} registry found.`)
+  } else {
+    logger.debug(
+      `${toolNames[toolToUse]} config contains this registry -> `,
+      blue(registry)
+    )
+  }
+
+  return registry
 }
 
 export function readConfig() {
-	let npmRegistry: string | undefined
+  let npmRegistry: string | undefined
 
-	try {
-		npmRegistry = getRegistry('npm')
-	} catch (error) {
-		if (error instanceof Error) {
-			logger.debug('running npm failed - ', error.message)
-		}
-	}
+  try {
+    npmRegistry = getRegistry('npm')
+  } catch (error) {
+    if (error instanceof Error) {
+      logger.debug('running npm failed - ', red(error.message))
+    }
+  }
 
-	let yarnRegistry: string | undefined
+  let yarnRegistry: string | undefined
 
-	try {
-		yarnRegistry = getRegistry('yarn')
-	} catch (error) {
-		if (error instanceof Error) {
-			logger.debug('running yarn failed - ', error.message)
-		}
-	}
+  try {
+    yarnRegistry = getRegistry('yarn')
+  } catch (error) {
+    if (error instanceof Error) {
+      logger.debug('running yarn failed - ', red(error.message))
+    }
+  }
 
-	return new Set(
-		[
-			...getRegistryEntries(npmRegistry),
-			...getRegistryEntries(yarnRegistry),
-		].filter(Boolean)
-	)
+  return new Set(
+    [
+      ...getRegistryEntries(npmRegistry),
+      ...getRegistryEntries(yarnRegistry),
+    ].filter(Boolean)
+  )
 }
 
 /**
@@ -85,7 +98,7 @@ export function readConfig() {
  * @returns array of two urls - one with the trailing `/` and one without.
  */
 function getRegistryEntries(registry?: string) {
-	if (!registry) return []
-	const withoutTrailingRegistry = registry.replace(/\/registry\/?$/im, '/')
-	return [withoutTrailingRegistry, withoutTrailingRegistry + 'registry/']
+  if (!registry) return []
+  const withoutTrailingRegistry = registry.replace(/\/registry\/?$/im, '/')
+  return [withoutTrailingRegistry, withoutTrailingRegistry + 'registry/']
 }

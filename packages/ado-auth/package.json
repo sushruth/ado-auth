@@ -1,6 +1,6 @@
 {
 	"name": "ado-auth",
-	"version": "0.2.5",
+	"version": "0.2.6",
 	"displayName": "ADO Authenticator",
 	"license": "MIT",
 	"main": "./bin/src/cli.js",
@@ -16,20 +16,19 @@
 		"compile": "node ./scripts/build.mjs",
 		"typegen": "tsc",
 		"build": "yarn compile && yarn typegen",
-		"dev": "esr ./src/cli.ts",
-		"prepublish": "yarn build"
+		"prepublish": "yarn build && yarn typegen"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sushruth/ado-auth-cli"
+		"url": "https://github.com/sushruth/ado-auth"
 	},
 	"bin": "./bin/src/cli.js",
 	"dependencies": {
-		"chalk": "4.1.2",
+		"colorette": "2.0.16",
 		"dayjs": "1.10.7",
 		"js-yaml": "4.1.0",
+		"light-spinner": "1.0.4",
 		"opener": "1.5.2",
-		"ora": "5.4.1",
 		"sade": "1.7.4"
 	},
 	"devDependencies": {

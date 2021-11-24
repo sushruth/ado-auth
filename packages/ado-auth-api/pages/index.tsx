@@ -1,5 +1,5 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
@@ -10,11 +10,11 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        This is a website for ADO Authenticator. Check out its source here:{" "}
+        This is a website for ADO Authenticator. Check out its source here:{' '}
         <a href="https://github.com/sushruth/ado-auth/tree/main/packages/ado-auth-api">
           ado-auth-api
         </a>
       </div>
     </>
-  );
+  )
 }
