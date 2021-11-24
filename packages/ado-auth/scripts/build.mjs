@@ -1,14 +1,12 @@
 import { pnpPlugin } from "@yarnpkg/esbuild-plugin-pnp";
 import { build } from "esbuild";
-import { readFileSync, readSync } from "fs";
+import { readFileSync } from "fs";
 
-/** @type import('./package.json') */
+/** @type import('../package.json') */
 const packageJson = JSON.parse(readFileSync("./package.json", "utf-8"));
 
 await build({
-  plugins: [
-    pnpPlugin(),
-  ],
+  plugins: [pnpPlugin()],
   external: Object.keys(packageJson.dependencies),
   minify: true,
   platform: "node",
