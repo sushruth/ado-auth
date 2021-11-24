@@ -1,17 +1,11 @@
-import chalk from "chalk";
+import { bold, green } from 'colorette';
 import http, { Server } from "http";
-import ora from "ora";
 import { SERVER_TIMEOUT } from "../lib/constants";
 import { CliOptions, Token } from "../lib/types";
 import { logger } from "../logger/logger";
 import { getJsonBody } from "./getJsonBody";
 
 export function listenForTokenFromTheWebsite(config: CliOptions) {
-  const spinner = ora({
-    isEnabled: logger.debugEnabled,
-    prefixText: logger.debugPrefix,
-  });
-
   return new Promise<Token>((resolve, reject) => {
     const server: Server = http.createServer(async (req, res) => {
       if (!req.method) {
@@ -32,7 +26,7 @@ export function listenForTokenFromTheWebsite(config: CliOptions) {
           clearTimeout(timeoutToReject);
           res.end(JSON.stringify({ status: "OK" }));
 
-          spinner.succeed("Received the token");
+          logger.spinner.succeed("Received the token");
           return server.close();
         }
       }
@@ -43,7 +37,7 @@ export function listenForTokenFromTheWebsite(config: CliOptions) {
     });
 
     const timeoutToReject = setTimeout(() => {
-      spinner.fail("Could not retrieve token within 60 seconds");
+      logger.spinner.fail("Could not retrieve token within 60 seconds");
 
       reject(new Error("Token retrieval took too long"));
 
@@ -52,9 +46,12 @@ export function listenForTokenFromTheWebsite(config: CliOptions) {
 
     logger.debug(
       "Started server at",
-      chalk.bold.green(`http://localhost:${config.port}`)
+      bold(green(`http://localhost:${config.port}`))
     );
     server.listen(config.port);
-    spinner.start("listening to POST request from the ado-auth site");
+
+    logger.spinner.new({
+      text: "listening to POST request from the ado-auth site",
+    });
   });
 }

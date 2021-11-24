@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { green } from 'colorette'
 import fs from 'fs'
 import os from 'os'
 import path from 'path'
@@ -54,7 +54,7 @@ export function writeNpmrc({ npmrcPath, registries, token }: WriteNpmrcParams) {
 	}
 
 	if (newNpmRc) {
-		logger.debug(chalk.green('Writing ~/.npmrc'))
+		logger.debug(green('Writing ~/.npmrc'))
 		fs.writeFileSync(path.resolve(os.homedir(), '.npmrc'), newNpmRc)
 	}
 }

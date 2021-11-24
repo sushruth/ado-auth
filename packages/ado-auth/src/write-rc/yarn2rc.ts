@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import { green } from 'colorette'
 import fs from 'fs'
 import yaml from 'js-yaml'
 import os from 'os'
@@ -69,7 +69,7 @@ export function writeYarn2rc({ registries, token, yarnrcPath }: Yarn2RcParams) {
 	} as YarnRcRegistryPart)
 
 	if (contents) {
-		logger.debug(chalk.green('Writing ~/.yarnrc.yml'))
+		logger.debug(green('Writing ~/.yarnrc.yml'))
 		fs.writeFileSync(path.resolve(os.homedir(), '.yarnrc.yml'), contents)
 	}
 }

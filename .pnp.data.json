@@ -2217,8 +2217,8 @@
                 "virtual:f1c9a564e99f5792681c6023bceeff828fb9573df69b82ab16b101986bbe1f7e1a71b69e892a761e77f6819c82097d69464a2a8cb08949a00ab8be0c66a539eb#npm:2.0.0"
               ],
               [
-                "chalk",
-                "npm:4.1.2"
+                "colorette",
+                "npm:2.0.16"
               ],
               [
                 "dayjs",
@@ -2237,12 +2237,12 @@
                 "npm:4.1.0"
               ],
               [
-                "opener",
-                "npm:1.5.2"
+                "light-spinner",
+                "npm:1.0.4"
               ],
               [
-                "ora",
-                "npm:5.4.1"
+                "opener",
+                "npm:1.5.2"
               ],
               [
                 "sade",
@@ -3082,36 +3082,6 @@
       ]
     ],
     [
-      "bl",
-      [
-        [
-          "npm:4.1.0",
-          {
-            "packageLocation": "./.yarn/cache/bl-npm-4.1.0-7f94cdcf3f-9e8521fa7e.zip/node_modules/bl/",
-            "packageDependencies": [
-              [
-                "bl",
-                "npm:4.1.0"
-              ],
-              [
-                "buffer",
-                "npm:5.7.1"
-              ],
-              [
-                "inherits",
-                "npm:2.0.4"
-              ],
-              [
-                "readable-stream",
-                "npm:3.6.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
       "bn.js",
       [
         [
@@ -3465,27 +3435,6 @@
               [
                 "buffer",
                 "npm:5.6.0"
-              ],
-              [
-                "base64-js",
-                "npm:1.5.1"
-              ],
-              [
-                "ieee754",
-                "npm:1.2.1"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ],
-        [
-          "npm:5.7.1",
-          {
-            "packageLocation": "./.yarn/cache/buffer-npm-5.7.1-513ef8259e-e2cf8429e1.zip/node_modules/buffer/",
-            "packageDependencies": [
-              [
-                "buffer",
-                "npm:5.7.1"
               ],
               [
                 "base64-js",
@@ -3928,64 +3877,6 @@
       ]
     ],
     [
-      "cli-cursor",
-      [
-        [
-          "npm:3.1.0",
-          {
-            "packageLocation": "./.yarn/cache/cli-cursor-npm-3.1.0-fee1e46b5e-2692784c6c.zip/node_modules/cli-cursor/",
-            "packageDependencies": [
-              [
-                "cli-cursor",
-                "npm:3.1.0"
-              ],
-              [
-                "restore-cursor",
-                "npm:3.1.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "cli-spinners",
-      [
-        [
-          "npm:2.6.1",
-          {
-            "packageLocation": "./.yarn/cache/cli-spinners-npm-2.6.1-33ce2bad0f-423409baaa.zip/node_modules/cli-spinners/",
-            "packageDependencies": [
-              [
-                "cli-spinners",
-                "npm:2.6.1"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "clone",
-      [
-        [
-          "npm:1.0.4",
-          {
-            "packageLocation": "./.yarn/cache/clone-npm-1.0.4-a610fcbcf9-d06418b733.zip/node_modules/clone/",
-            "packageDependencies": [
-              [
-                "clone",
-                "npm:1.0.4"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
       "color-convert",
       [
         [
@@ -4084,6 +3975,19 @@
               [
                 "colorette",
                 "npm:1.4.0"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ],
+        [
+          "npm:2.0.16",
+          {
+            "packageLocation": "./.yarn/cache/colorette-npm-2.0.16-7b996485d7-cd55596a3a.zip/node_modules/colorette/",
+            "packageDependencies": [
+              [
+                "colorette",
+                "npm:2.0.16"
               ]
             ],
             "linkType": "HARD"
@@ -4740,28 +4644,6 @@
               [
                 "deep-is",
                 "npm:0.1.4"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "defaults",
-      [
-        [
-          "npm:1.0.3",
-          {
-            "packageLocation": "./.yarn/cache/defaults-npm-1.0.3-e829107b9e-96e2112da6.zip/node_modules/defaults/",
-            "packageDependencies": [
-              [
-                "defaults",
-                "npm:1.0.3"
-              ],
-              [
-                "clone",
-                "npm:1.0.4"
               ]
             ],
             "linkType": "HARD"
@@ -8953,24 +8835,6 @@
       ]
     ],
     [
-      "is-interactive",
-      [
-        [
-          "npm:1.0.0",
-          {
-            "packageLocation": "./.yarn/cache/is-interactive-npm-1.0.0-7ff7c6e04a-824808776e.zip/node_modules/is-interactive/",
-            "packageDependencies": [
-              [
-                "is-interactive",
-                "npm:1.0.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
       "is-lambda",
       [
         [
@@ -9191,24 +9055,6 @@
               [
                 "has-tostringtag",
                 "npm:1.0.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "is-unicode-supported",
-      [
-        [
-          "npm:0.1.0",
-          {
-            "packageLocation": "./.yarn/cache/is-unicode-supported-npm-0.1.0-0833e1bbfb-a2aab86ee7.zip/node_modules/is-unicode-supported/",
-            "packageDependencies": [
-              [
-                "is-unicode-supported",
-                "npm:0.1.0"
               ]
             ],
             "linkType": "HARD"
@@ -9511,6 +9357,24 @@
       ]
     ],
     [
+      "light-spinner",
+      [
+        [
+          "npm:1.0.4",
+          {
+            "packageLocation": "./.yarn/cache/light-spinner-npm-1.0.4-0ea44cef73-4fb2da966d.zip/node_modules/light-spinner/",
+            "packageDependencies": [
+              [
+                "light-spinner",
+                "npm:1.0.4"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ]
+      ]
+    ],
+    [
       "loader-utils",
       [
         [
@@ -9630,32 +9494,6 @@
               [
                 "lodash.truncate",
                 "npm:4.4.2"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "log-symbols",
-      [
-        [
-          "npm:4.1.0",
-          {
-            "packageLocation": "./.yarn/cache/log-symbols-npm-4.1.0-0a13492d8b-fce1497b31.zip/node_modules/log-symbols/",
-            "packageDependencies": [
-              [
-                "log-symbols",
-                "npm:4.1.0"
-              ],
-              [
-                "chalk",
-                "npm:4.1.2"
-              ],
-              [
-                "is-unicode-supported",
-                "npm:0.1.0"
               ]
             ],
             "linkType": "HARD"
@@ -9922,24 +9760,6 @@
               [
                 "brorand",
                 "npm:1.1.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "mimic-fn",
-      [
-        [
-          "npm:2.1.0",
-          {
-            "packageLocation": "./.yarn/cache/mimic-fn-npm-2.1.0-4fbeb3abb4-d2421a3444.zip/node_modules/mimic-fn/",
-            "packageDependencies": [
-              [
-                "mimic-fn",
-                "npm:2.1.0"
               ]
             ],
             "linkType": "HARD"
@@ -11118,28 +10938,6 @@
       ]
     ],
     [
-      "onetime",
-      [
-        [
-          "npm:5.1.2",
-          {
-            "packageLocation": "./.yarn/cache/onetime-npm-5.1.2-3ed148fa42-2478859ef8.zip/node_modules/onetime/",
-            "packageDependencies": [
-              [
-                "onetime",
-                "npm:5.1.2"
-              ],
-              [
-                "mimic-fn",
-                "npm:2.1.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
       "opener",
       [
         [
@@ -11192,60 +10990,6 @@
               [
                 "word-wrap",
                 "npm:1.2.3"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "ora",
-      [
-        [
-          "npm:5.4.1",
-          {
-            "packageLocation": "./.yarn/cache/ora-npm-5.4.1-4f0343adb7-28d476ee6c.zip/node_modules/ora/",
-            "packageDependencies": [
-              [
-                "ora",
-                "npm:5.4.1"
-              ],
-              [
-                "bl",
-                "npm:4.1.0"
-              ],
-              [
-                "chalk",
-                "npm:4.1.2"
-              ],
-              [
-                "cli-cursor",
-                "npm:3.1.0"
-              ],
-              [
-                "cli-spinners",
-                "npm:2.6.1"
-              ],
-              [
-                "is-interactive",
-                "npm:1.0.0"
-              ],
-              [
-                "is-unicode-supported",
-                "npm:0.1.0"
-              ],
-              [
-                "log-symbols",
-                "npm:4.1.0"
-              ],
-              [
-                "strip-ansi",
-                "npm:6.0.1"
-              ],
-              [
-                "wcwidth",
-                "npm:1.0.1"
               ]
             ],
             "linkType": "HARD"
@@ -12447,32 +12191,6 @@
               [
                 "resolve-from",
                 "npm:4.0.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "restore-cursor",
-      [
-        [
-          "npm:3.1.0",
-          {
-            "packageLocation": "./.yarn/cache/restore-cursor-npm-3.1.0-52c5a4c98f-f877dd8741.zip/node_modules/restore-cursor/",
-            "packageDependencies": [
-              [
-                "restore-cursor",
-                "npm:3.1.0"
-              ],
-              [
-                "onetime",
-                "npm:5.1.2"
-              ],
-              [
-                "signal-exit",
-                "npm:3.0.6"
               ]
             ],
             "linkType": "HARD"
@@ -14404,28 +14122,6 @@
               [
                 "graceful-fs",
                 "npm:4.2.8"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "wcwidth",
-      [
-        [
-          "npm:1.0.1",
-          {
-            "packageLocation": "./.yarn/cache/wcwidth-npm-1.0.1-05fa596453-814e9d1ddc.zip/node_modules/wcwidth/",
-            "packageDependencies": [
-              [
-                "wcwidth",
-                "npm:1.0.1"
-              ],
-              [
-                "defaults",
-                "npm:1.0.3"
               ]
             ],
             "linkType": "HARD"
