@@ -1,6 +1,6 @@
 {
 	"name": "ado-auth",
-	"version": "0.2.6",
+	"version": "0.2.7",
 	"displayName": "ADO Authenticator",
 	"license": "MIT",
 	"main": "./bin/src/cli.js",
@@ -8,12 +8,16 @@
 	"keywords": [
 		"azure devops",
 		"authenticate",
-		"vsts auth",
+		"vsts npm auth",
+		"vsts-npm-auth",
+		"better-vsts-npm-auth",
+		"better vsts-npm-auth",
 		"ado-auth",
-		"ado auth"
+		"ado auth",
+		"private ado npm feed"
 	],
 	"scripts": {
-		"compile": "node ./scripts/build.mjs",
+		"compile": "node ./scripts/build.mjs --minify",
 		"typegen": "tsc",
 		"build": "yarn compile && yarn typegen",
 		"prepublish": "yarn build && yarn typegen"

@@ -27,11 +27,17 @@ jobs:
       - run: yarn
         name: "Running yarn once"
 
-      - run: yarn workspace ado-auth build
+      - run: yarn workspaces foreach -ptv run build --exclude ado-auth-api
         name: "Building the code"
 
       - run: npm publish ./packages/ado-auth
-        name: "Trying to publish to NPM"
+        name: "Trying to publish ado-auth to NPM"
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+      - run: npm publish ./packages/yarn-ado-auth
+        name: "Trying to publish yarn-ado-auth to NPM"
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
