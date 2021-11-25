@@ -27,7 +27,7 @@ jobs:
       - run: yarn
         name: "Running yarn once"
 
-      - run: yarn workspaces foreach -ptv run build --exclude ado-auth-api
+      - run: yarn workspaces foreach -ptv --exclude ado-auth-api run build
         name: "Building the code"
 
       - run: npm publish ./packages/ado-auth
