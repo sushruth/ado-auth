@@ -1,6 +1,6 @@
 {
 	"name": "yarn-ado-auth",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Yarn 3 plugin to help with ADO authentication",
 	"keywords": [
 		"yarn",

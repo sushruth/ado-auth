@@ -1,4 +1,4 @@
-./scripts/**
-./src/**
+scripts/**/*
+src/**/*
 ./.eslintrc.js
 ./tsconfig.json
