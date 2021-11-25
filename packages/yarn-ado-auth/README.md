@@ -5,7 +5,7 @@ This is a yarn 3 plugin that works with `ado-auth` to make sure authentication i
 ## Installing plugin
 
 ```
-yarn plugin import https://unpkg.com/yarn-ado-auth/bin/index.min.js
+yarn plugin import https://unpkg.com/yarn-ado-auth
 ```
 
 ## Usage
@@ -15,4 +15,4 @@ Proceed to install packages with yarn as usual. Now ADO auth check happens every
 
 ## TODO 
 
-- [ ] find out a way to stream logs to console from ado-auth
+- [x] find out a way to stream logs to console from ado-auth

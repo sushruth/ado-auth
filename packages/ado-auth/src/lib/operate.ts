@@ -13,6 +13,11 @@ import { readConfig } from './readConfig'
 import { CliOptions, Token } from './types'
 
 export async function operate(config: CliOptions) {
+  if (config.debug) {
+    // This enable works when programmatically called
+    logger.enableDebug()
+  }
+
   logger.debug(
     `Trying to get registry settings from ${npmString} and ${yarnString}`
   )

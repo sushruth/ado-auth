@@ -27,6 +27,7 @@ const cli = sade('ado-auth', true)
 
 cli.action(async (config: CliOptions) => {
   if (config.debug) {
+    // This enable one only works in CLI
     logger.enableDebug()
   }
 

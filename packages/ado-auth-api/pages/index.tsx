@@ -10,10 +10,15 @@ export default function Home() {
       </Head>
 
       <div className={styles.container}>
-        This is a website for ADO Authenticator. Check out its source here:{' '}
+        This is a website for ADO Authenticator.
+        <br />
+        Check out its source here:{' '}
         <a href="https://github.com/sushruth/ado-auth/tree/main/packages/ado-auth-api">
           ado-auth-api
         </a>
+        <br />
+        There is a Yarn 3 plugin available as well -{' '}
+        <a href="https://www.npmjs.com/package/yarn-ado-auth">yarn-ado-auth</a>
       </div>
     </>
   )
