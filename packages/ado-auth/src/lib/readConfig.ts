@@ -3,7 +3,17 @@ import { blue, red } from 'kleur/colors'
 import { logger } from '../logger/logger'
 import { npmString, yarnString } from './constants'
 
-const defaultRegex = /^(https?)?:?\/\/registry\.(yarnpkg|npmjs)\.(com|org).*/i
+const defaultRegistryRegex =
+  /^(https?)?:?\/\/registry\.(yarnpkg|npmjs)\.(com|org).*/i
+
+const adoRegistryRegexes = [
+  /^\/\/pkgs\.dev\.azure\.com/i,
+  /^\/\/(.*?).pkgs\.visualstudio\.com/i,
+]
+
+function isAdoRegistry(registry: string) {
+  return adoRegistryRegexes.filter((ex) => ex.test(registry)).length > 0
+}
 
 const commands = {
   npm: 'npm config get registry',
@@ -41,7 +51,11 @@ function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
       ?.trim()
       .replace(/^https?:/, '') // remove https
 
-    if (defaultRegex.test(registry) || /undefined/i.test(registry)) {
+    if (
+      /undefined/i.test(registry) ||
+      !isAdoRegistry(registry) ||
+      defaultRegistryRegex.test(registry)
+    ) {
       registry = ''
     }
   } catch (error) {
@@ -52,7 +66,9 @@ function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
   }
 
   if (!registry) {
-    logger.debug(`No custom ${toolNames[toolToUse]} registry found.`)
+    logger.debug(
+      `No custom ${toolNames[toolToUse]} Azure DevOps registry found.`
+    )
   } else {
     logger.debug(
       `${toolNames[toolToUse]} config contains this registry -> `,
