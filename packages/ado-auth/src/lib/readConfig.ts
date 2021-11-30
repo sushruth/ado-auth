@@ -1,5 +1,5 @@
 import { execSync } from 'child_process'
-import { blue, bold, red } from 'colorette'
+import { blue, red } from 'kleur/colors'
 import { logger } from '../logger/logger'
 import { npmString, yarnString } from './constants'
 

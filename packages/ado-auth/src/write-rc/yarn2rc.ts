@@ -1,6 +1,6 @@
-import { blue, bold, cyan, green } from 'colorette'
 import fs from 'fs'
 import yaml from 'js-yaml'
+import { blue, bold, cyan, green } from 'kleur/colors'
 import os from 'os'
 import path from 'path'
 import { Token, YarnRcRegistryPart } from '../lib/types'
@@ -37,7 +37,7 @@ export function writeYarn2rc({ registries, token, yarnrcPath }: Yarn2RcParams) {
       }
     }
   } else {
-    logger.debug(`No ${bold(cyan('.yarnrc.yml'))} found in home directory`)
+    logger.debug(`No ${cyan(bold('.yarnrc.yml'))} found in home directory`)
   }
 
   const yarnRcDump = registries.size
@@ -69,7 +69,7 @@ export function writeYarn2rc({ registries, token, yarnrcPath }: Yarn2RcParams) {
   } as YarnRcRegistryPart)
 
   if (contents) {
-    logger.debug('✏️ ', green(`Writing ${bold(cyan('~/.yarnrc.yml'))}`))
+    logger.debug('✏️ ', green(`Writing`), cyan(bold('~/.yarnrc.yml')))
     fs.writeFileSync(path.resolve(os.homedir(), '.yarnrc.yml'), contents)
   }
 }

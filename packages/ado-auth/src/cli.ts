@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { bold, greenBright } from 'colorette'
+import { bold, red } from 'kleur/colors'
 import sade from 'sade'
 import { version } from '../package.json'
 import { CLIENT_ID, DEFAULT_HOST, SERVER_PORT } from './lib/constants'
@@ -34,20 +34,20 @@ cli.action(async (config: CliOptions) => {
   if (!config.clientId) {
     config.clientId = CLIENT_ID
   } else {
-    logger.debug('Using client id - ', greenBright(bold(config.clientId)))
+    logger.debug('Using client id - ', red(bold(config.clientId)))
   }
 
   if (config.host !== DEFAULT_HOST) {
     logger.debug(
       'Using cusotm host for authentication - ',
-      greenBright(bold(config.host))
+      red(bold(config.host))
     )
   }
 
   if (config.port !== SERVER_PORT) {
     logger.debug(
       'Using custom port for auth callback - ',
-      greenBright(bold(config.port))
+      red(bold(`${config.port}`))
     )
   }
 

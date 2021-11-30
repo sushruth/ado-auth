@@ -1,4 +1,4 @@
-import { yellow, bold } from 'colorette'
+import { bold, yellow } from 'kleur/colors'
 
 export const SERVER_TIMEOUT = 60000
 export const SERVER_PORT = 35287

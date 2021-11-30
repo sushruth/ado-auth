@@ -1,4 +1,4 @@
-import { bold, green, magenta, yellow } from 'colorette'
+import { bold, green, magenta } from 'kleur/colors'
 import os from 'os'
 import path from 'path'
 import { auth } from '../api-stuff/auth'
@@ -37,13 +37,13 @@ export async function operate(config: CliOptions) {
   let token: Token | undefined = undefined
 
   if (report.type === PrepareTypes.fetch) {
-    logger.debug(bold(magenta('Trying to get auth token')))
+    logger.debug(magenta(bold('Trying to get auth token')))
     token = await auth(rcPath, config)
   } else if (report.type === PrepareTypes.refetch) {
-    logger.debug(bold(magenta('Trying to refetch auth token')))
+    logger.debug(magenta(bold('Trying to refetch auth token')))
     token = await refetch(report.data, rcPath, config)
   } else if (report.type === PrepareTypes.noop) {
-    logger.debug('✅ ', bold(green('Valid token exists!')))
+    logger.debug('✅ ', green(bold('Valid token exists!')))
     token = report.data
   }
 

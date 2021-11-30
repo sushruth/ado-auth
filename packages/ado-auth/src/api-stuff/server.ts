@@ -1,5 +1,5 @@
-import { bold, green } from 'colorette'
 import http, { Server } from 'http'
+import { bold, green } from 'kleur/colors'
 import { SERVER_TIMEOUT } from '../lib/constants'
 import { CliOptions, Token } from '../lib/types'
 import { logger } from '../logger/logger'

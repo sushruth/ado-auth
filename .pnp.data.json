@@ -5684,14 +5684,6 @@
                 "virtual:f1c9a564e99f5792681c6023bceeff828fb9573df69b82ab16b101986bbe1f7e1a71b69e892a761e77f6819c82097d69464a2a8cb08949a00ab8be0c66a539eb#npm:2.0.0"
               ],
               [
-                "colorette",
-                "npm:2.0.16"
-              ],
-              [
-                "dayjs",
-                "npm:1.10.7"
-              ],
-              [
                 "esbuild",
                 "npm:0.13.15"
               ],
@@ -5702,6 +5694,10 @@
               [
                 "js-yaml",
                 "npm:4.1.0"
+              ],
+              [
+                "kleur",
+                "npm:4.1.4"
               ],
               [
                 "light-spinner",
@@ -7947,19 +7943,6 @@
             ],
             "linkType": "HARD"
           }
-        ],
-        [
-          "npm:2.0.16",
-          {
-            "packageLocation": "./.yarn/cache/colorette-npm-2.0.16-7b996485d7-cd55596a3a.zip/node_modules/colorette/",
-            "packageDependencies": [
-              [
-                "colorette",
-                "npm:2.0.16"
-              ]
-            ],
-            "linkType": "HARD"
-          }
         ]
       ]
     ],
@@ -8536,24 +8519,6 @@
               [
                 "data-uri-to-buffer",
                 "npm:4.0.0"
-              ]
-            ],
-            "linkType": "HARD"
-          }
-        ]
-      ]
-    ],
-    [
-      "dayjs",
-      [
-        [
-          "npm:1.10.7",
-          {
-            "packageLocation": "./.yarn/cache/dayjs-npm-1.10.7-34318a8e39-a0a4ca95ab.zip/node_modules/dayjs/",
-            "packageDependencies": [
-              [
-                "dayjs",
-                "npm:1.10.7"
               ]
             ],
             "linkType": "HARD"
@@ -14442,6 +14407,24 @@
               [
                 "json-buffer",
                 "npm:3.0.1"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ]
+      ]
+    ],
+    [
+      "kleur",
+      [
+        [
+          "npm:4.1.4",
+          {
+            "packageLocation": "./.yarn/cache/kleur-npm-4.1.4-7a73ff57c6-7f6db36e37.zip/node_modules/kleur/",
+            "packageDependencies": [
+              [
+                "kleur",
+                "npm:4.1.4"
               ]
             ],
             "linkType": "HARD"
