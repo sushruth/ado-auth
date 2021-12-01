@@ -1,4 +1,4 @@
-import { execSync } from 'child_process'
+import { execSync, ExecSyncOptionsWithStringEncoding } from 'child_process'
 import { blue, red } from 'kleur/colors'
 import { logger } from '../logger/logger'
 import { npmString, yarnString } from './constants'
@@ -23,19 +23,76 @@ const commands = {
 
 type Tool = keyof typeof commands
 
+const execParams: ExecSyncOptionsWithStringEncoding = {
+  encoding: 'utf8',
+  cwd: process.cwd(),
+}
+
+function replaceHttps(input: string = '') {
+  return input.replace(/^https?:/, '')
+}
+
+function getScopeRegistries(tool: Tool) {
+  try {
+    if (tool === 'npm' || tool === 'yarn') {
+      const config = JSON.parse(execSync(`npm config list --json`, execParams))
+
+      const registries: string[] = []
+
+      for (const entry in config) {
+        if (/@(.*?):registry/.test(entry)) {
+          registries.push(replaceHttps(config[entry]))
+        }
+      }
+
+      return registries
+    } else if (tool === 'yarn2') {
+      const npmRegistries = JSON.parse(
+        execSync('yarn config get npmRegistries --json', execParams)
+      )
+
+      const registries: string[] = []
+
+      for (const entry in npmRegistries) {
+        registries.push(replaceHttps(entry))
+      }
+
+      const npmScopes = JSON.parse(
+        execSync('yarn config get npmScopes --json', execParams)
+      )
+
+      for (const entry of npmScopes) {
+        registries.push(replaceHttps(entry.npmRegistryServer))
+      }
+
+      return registries
+    }
+  } catch (error) {
+    logger.debug('No scoped registries found')
+  }
+}
+
 const toolNames: Record<Tool, string> = {
   npm: npmString,
   yarn: yarnString,
   yarn2: yarnString,
 }
 
+function isValidRegistryEntry(registry: string) {
+  return (
+    !/undefined/i.test(registry) &&
+    isAdoRegistry(registry) &&
+    !defaultRegistryRegex.test(registry)
+  )
+}
+
 function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
-  let registry = ''
+  let registries: string[] = []
 
   let toolToUse: Tool = tool
 
   if (tool === 'yarn') {
-    const version = execSync('yarn -v', { encoding: 'utf8' })?.trim()
+    const version = execSync('yarn -v', execParams)?.trim()
     const match = version.match(/(\d+)\.*/i)
 
     if (Number(match?.[1]) >= 2) {
@@ -44,19 +101,18 @@ function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
   }
 
   try {
-    registry = execSync(commands[toolToUse], {
-      encoding: 'utf8',
-      cwd: process.cwd(),
-    })
-      ?.trim()
-      .replace(/^https?:/, '') // remove https
+    const registry = execSync(commands[toolToUse], execParams)?.trim()
 
-    if (
-      /undefined/i.test(registry) ||
-      !isAdoRegistry(registry) ||
-      defaultRegistryRegex.test(registry)
-    ) {
-      registry = ''
+    if (isValidRegistryEntry(registry)) {
+      registries.push(replaceHttps(registry))
+    }
+
+    logger.debug('Trying to add scoped registries')
+
+    for (const entry of getScopeRegistries(toolToUse) || []) {
+      if (isValidRegistryEntry(entry)) {
+        registries.push(entry)
+      }
     }
   } catch (error) {
     logger.debug(
@@ -65,35 +121,35 @@ function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
     )
   }
 
-  if (!registry) {
+  if (!registries.length) {
     logger.debug(
       `No custom ${toolNames[toolToUse]} Azure DevOps registry found.`
     )
   } else {
-    logger.debug(
-      `${toolNames[toolToUse]} config contains this registry -> `,
-      blue(registry)
-    )
+    logger.debug(`${toolNames[toolToUse]} config contains these registries -> `)
+    for (const registry of registries) {
+      logger.debug(`\t ${blue(registry)}`)
+    }
   }
 
-  return registry
+  return registries
 }
 
 export function readConfig() {
-  let npmRegistry: string | undefined
+  let npmRegistries: string[] = []
 
   try {
-    npmRegistry = getRegistry('npm')
+    npmRegistries.push(...getRegistry('npm'))
   } catch (error) {
     if (error instanceof Error) {
       logger.debug('running npm failed - ', red(error.message))
     }
   }
 
-  let yarnRegistry: string | undefined
+  let yarnRegistries: string[] = []
 
   try {
-    yarnRegistry = getRegistry('yarn')
+    yarnRegistries.push(...getRegistry('yarn'))
   } catch (error) {
     if (error instanceof Error) {
       logger.debug('running yarn failed - ', red(error.message))
@@ -102,8 +158,8 @@ export function readConfig() {
 
   return new Set(
     [
-      ...getRegistryEntries(npmRegistry),
-      ...getRegistryEntries(yarnRegistry),
+      ...npmRegistries.flatMap((reg) => getRegistryEntries(reg)),
+      ...yarnRegistries.flatMap((reg) => getRegistryEntries(reg)),
     ].filter(Boolean)
   )
 }
