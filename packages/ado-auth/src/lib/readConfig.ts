@@ -47,15 +47,7 @@ function getScopeRegistries(tool: Tool) {
 
       return registries
     } else if (tool === 'yarn2') {
-      const npmRegistries = JSON.parse(
-        execSync('yarn config get npmRegistries --json', execParams)
-      )
-
       const registries: string[] = []
-
-      for (const entry in npmRegistries) {
-        registries.push(replaceHttps(entry))
-      }
 
       const npmScopes = JSON.parse(
         execSync('yarn config get npmScopes --json', execParams)
