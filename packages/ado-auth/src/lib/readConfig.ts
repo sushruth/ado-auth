@@ -93,10 +93,12 @@ function getRegistry(tool: Exclude<Tool, 'yarn2'>) {
   }
 
   try {
-    const registry = execSync(commands[toolToUse], execParams)?.trim()
+    const registry = replaceHttps(
+      execSync(commands[toolToUse], execParams)?.trim()
+    )
 
     if (isValidRegistryEntry(registry)) {
-      registries.push(replaceHttps(registry))
+      registries.push(registry)
     }
 
     logger.debug('Trying to add scoped registries')
