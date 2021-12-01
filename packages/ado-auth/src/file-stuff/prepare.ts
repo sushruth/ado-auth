@@ -1,7 +1,6 @@
-import dayjs from 'dayjs'
 import fs from 'fs'
-import { PrepareReturn, PrepareTypes } from './prepare.types'
 import { TokenStore } from '../lib/types'
+import { PrepareReturn, PrepareTypes } from './prepare.types'
 
 export function prepare(rcPath: string): PrepareReturn {
   if (fs.existsSync(rcPath)) {
@@ -9,8 +8,11 @@ export function prepare(rcPath: string): PrepareReturn {
     const file = fs.readFileSync(rcPath, 'utf-8')
     try {
       const data: TokenStore = JSON.parse(file)
-      if (!dayjs(data.expires_on).isAfter(dayjs().subtract(1, 'minute'))) {
-        // expires in less than 1 minute
+      const isGoingToExpireInFiveMinutes =
+        new Date(data.expires_on) < new Date(Date.now() - 5 * 60 * 1000)
+
+      if (isGoingToExpireInFiveMinutes) {
+        // expires in less than 5 minutes
         return {
           type: PrepareTypes.refetch,
           data,

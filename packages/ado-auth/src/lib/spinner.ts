@@ -1,5 +1,5 @@
+import { dim } from 'kleur/colors'
 import Spin from 'light-spinner'
-import { dim } from 'colorette'
 import { IOption } from 'light-spinner/dist/interface'
 
 export type PrefixedSpinnerOptions = IOption & {

@@ -1,5 +1,5 @@
-import { blue, bold, green, cyan } from 'colorette'
 import fs from 'fs'
+import { blue, bold, cyan, green } from 'kleur/colors'
 import os from 'os'
 import path from 'path'
 import { AUTH_DELIMITER } from '../lib/constants'
@@ -15,7 +15,7 @@ type WriteNpmrcParams = {
 export function writeNpmrc({ npmrcPath, registries, token }: WriteNpmrcParams) {
   let newNpmRc = ''
 
-  logger.debug(`${bold(registries.size)} registries to be updated`)
+  logger.debug(`${bold(`${registries.size}`)} registries to be updated`)
 
   if (fs.existsSync(npmrcPath)) {
     logger.debug(`found ${cyan(bold('.npmrc'))} in home directory`)
@@ -56,7 +56,7 @@ export function writeNpmrc({ npmrcPath, registries, token }: WriteNpmrcParams) {
   }
 
   if (newNpmRc) {
-    logger.debug('✏️ ', green(`Writing ${cyan(bold('~/.npmrc'))}`))
+    logger.debug('✏️ ', green(`Writing`), cyan(bold('~/.npmrc')))
     fs.writeFileSync(path.resolve(os.homedir(), '.npmrc'), newNpmRc)
   }
 }

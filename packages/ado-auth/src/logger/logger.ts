@@ -1,4 +1,4 @@
-import { dim } from 'colorette'
+import { dim } from 'kleur/colors'
 import Spin from 'light-spinner'
 import { PrefixedSpinner, PrefixedSpinnerOptions } from '../lib/spinner'
 
@@ -43,14 +43,14 @@ class Logger {
 
     succeed: (text?: string) => {
       if (this.debugEnabled) {
-        this.debug(`✅ ${text || this._spinner?.text}`)
+        this.debug(`\n✅ ${text || this._spinner?.text}`)
         this._spinner?.stop()
       }
     },
 
     fail: (text?: string) => {
       if (this.debugEnabled) {
-        this.debug(`❌ ${text || this._spinner?.text}`)
+        this.debug(`\n❌ ${text || this._spinner?.text}`)
         this._spinner?.stop()
       }
     },

@@ -1,6 +1,6 @@
 {
 	"name": "ado-auth",
-	"version": "0.2.9",
+	"version": "0.2.11",
 	"displayName": "ADO Authenticator",
 	"license": "MIT",
 	"main": "./bin/src/cli.js",
@@ -20,7 +20,7 @@
 		"compile": "node ./scripts/build.mjs --minify",
 		"typegen": "tsc",
 		"build": "yarn compile && yarn typegen",
-		"prepublish": "yarn build && yarn typegen"
+		"prepublish": "yarn build"
 	},
 	"repository": {
 		"type": "git",
@@ -28,9 +28,8 @@
 	},
 	"bin": "./bin/src/cli.js",
 	"dependencies": {
-		"colorette": "2.0.16",
-		"dayjs": "1.10.7",
 		"js-yaml": "4.1.0",
+		"kleur": "^4.1.4",
 		"light-spinner": "1.0.4",
 		"opener": "1.5.2",
 		"sade": "1.7.4"
