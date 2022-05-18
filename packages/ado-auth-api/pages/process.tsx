@@ -1,18 +1,11 @@
 import Head from 'next/head'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { SERVER_PORT } from '../lib/constants'
 import styles from '../styles/Home.module.css'
-import processStyles from '../styles/Process.module.css'
 
 export default function Process(): JSX.Element {
   const [done, setDone] = useState(false)
-  const [timeoutCancelled, setTimeoutCancelled] = useState(false)
   const timeout = useRef(-1)
-
-  const buttonClick = useCallback(() => {
-    window.clearTimeout(timeout.current)
-    setTimeoutCancelled(true)
-  }, [])
 
   useEffect(() => {
     const body = localStorage.getItem('token')
@@ -35,10 +28,10 @@ export default function Process(): JSX.Element {
 
   // Handling timeout
   useEffect(() => {
-    if (!timeout.current) {
+    if (timeout.current === -1) {
       timeout.current = window.setTimeout(() => {
         window.close()
-      }, 2500)
+      }, 1000)
     }
   }, [])
 
@@ -58,11 +51,6 @@ export default function Process(): JSX.Element {
               If this page does not close automatically, you can now close the
               window anyway
             </span>
-            {!timeoutCancelled && (
-              <button className={processStyles.button} onClick={buttonClick}>
-                Dont close!
-              </button>
-            )}
           </>
         ) : (
           <h1>Please wait!</h1>

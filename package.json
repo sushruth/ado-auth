@@ -1,6 +1,6 @@
 {
 	"name": "ado-auth-root",
-	"packageManager": "yarn@3.2.0-rc.5",
+	"packageManager": "yarn@3.2.1",
 	"private": true,
 	"workspaces": [
 		"packages/*"
