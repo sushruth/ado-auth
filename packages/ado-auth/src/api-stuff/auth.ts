@@ -1,8 +1,9 @@
-import open from 'opener'
+import open from 'open'
 import { URL } from 'url'
 import { CLIENT_ID } from '../lib/constants'
 import { CliOptions } from '../lib/types'
 import { writeAdoRc } from '../lib/writeAdoRc'
+import { logger } from '../logger/logger'
 import { listenForTokenFromTheWebsite } from './server'
 
 function getUrl(clientId = CLIENT_ID, host: string, port: string | number) {
@@ -16,6 +17,8 @@ function getUrl(clientId = CLIENT_ID, host: string, port: string | number) {
 
 export async function auth(rcPath: string, config: CliOptions) {
   const url = getUrl(config.clientId, config.host, config.port)
+
+  logger.debug(`Opening ${url}`)
 
   open(url)
 

@@ -1,6 +1,6 @@
 {
 	"name": "ado-auth",
-	"version": "0.2.12",
+	"version": "0.2.13",
 	"displayName": "ADO Authenticator",
 	"license": "MIT",
 	"main": "./bin/src/cli.js",
@@ -31,7 +31,7 @@
 		"js-yaml": "4.1.0",
 		"kleur": "^4.1.4",
 		"light-spinner": "1.0.4",
-		"opener": "1.5.2",
+		"open": "8.4.0",
 		"sade": "1.7.4"
 	},
 	"devDependencies": {

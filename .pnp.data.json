@@ -99,7 +99,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "linkType": "SOFT"
@@ -2133,7 +2133,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "packagePeers": [
@@ -2335,7 +2335,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "packagePeers": [
@@ -2548,7 +2548,7 @@
               ],
               [
                 "tsutils",
-                "virtual:c44f4e1539db4be94440c064ed292259e04f846ed9b3e6f10e8be3aacfa92f53eb49c4ca95f969c82dfee9967d006e8f557b26328679ef54262f514a066829c8#npm:3.21.0"
+                "virtual:806930d5d7c33caf2b1f524d53c537effdcf03b34cceae2e9b02460d442a138d5159dfa0d5c8f13dfc3efb8979a54cbe08297b10a374c0c13e5a72d61f097c4b#npm:3.21.0"
               ],
               [
                 "typescript",
@@ -2605,7 +2605,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "packagePeers": [
@@ -5321,8 +5321,8 @@
                 "npm:1.0.4"
               ],
               [
-                "opener",
-                "npm:1.5.2"
+                "open",
+                "npm:8.4.0"
               ],
               [
                 "sade",
@@ -5442,7 +5442,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "linkType": "SOFT"
@@ -7310,6 +7310,24 @@
               [
                 "defer-to-connect",
                 "npm:2.0.1"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ]
+      ]
+    ],
+    [
+      "define-lazy-prop",
+      [
+        [
+          "npm:2.0.0",
+          {
+            "packageLocation": "./.yarn/cache/define-lazy-prop-npm-2.0.0-bba0cd91a7-0115fdb065.zip/node_modules/define-lazy-prop/",
+            "packageDependencies": [
+              [
+                "define-lazy-prop",
+                "npm:2.0.0"
               ]
             ],
             "linkType": "HARD"
@@ -11693,6 +11711,24 @@
       ]
     ],
     [
+      "is-docker",
+      [
+        [
+          "npm:2.2.1",
+          {
+            "packageLocation": "./.yarn/cache/is-docker-npm-2.2.1-3f18a53aff-3fef7ddbf0.zip/node_modules/is-docker/",
+            "packageDependencies": [
+              [
+                "is-docker",
+                "npm:2.2.1"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ]
+      ]
+    ],
+    [
       "is-extglob",
       [
         [
@@ -11951,6 +11987,28 @@
               [
                 "is-windows",
                 "npm:1.0.2"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ]
+      ]
+    ],
+    [
+      "is-wsl",
+      [
+        [
+          "npm:2.2.0",
+          {
+            "packageLocation": "./.yarn/cache/is-wsl-npm-2.2.0-2ba10d6393-20849846ae.zip/node_modules/is-wsl/",
+            "packageDependencies": [
+              [
+                "is-wsl",
+                "npm:2.2.0"
+              ],
+              [
+                "is-docker",
+                "npm:2.2.1"
               ]
             ],
             "linkType": "HARD"
@@ -13783,16 +13841,28 @@
       ]
     ],
     [
-      "opener",
+      "open",
       [
         [
-          "npm:1.5.2",
+          "npm:8.4.0",
           {
-            "packageLocation": "./.yarn/cache/opener-npm-1.5.2-7a1aa69f14-33b620c0d5.zip/node_modules/opener/",
+            "packageLocation": "./.yarn/cache/open-npm-8.4.0-df63cfe537-e9545bec64.zip/node_modules/open/",
             "packageDependencies": [
               [
-                "opener",
-                "npm:1.5.2"
+                "open",
+                "npm:8.4.0"
+              ],
+              [
+                "define-lazy-prop",
+                "npm:2.0.0"
+              ],
+              [
+                "is-docker",
+                "npm:2.2.1"
+              ],
+              [
+                "is-wsl",
+                "npm:2.2.0"
               ]
             ],
             "linkType": "HARD"
@@ -17085,6 +17155,35 @@
           }
         ],
         [
+          "virtual:806930d5d7c33caf2b1f524d53c537effdcf03b34cceae2e9b02460d442a138d5159dfa0d5c8f13dfc3efb8979a54cbe08297b10a374c0c13e5a72d61f097c4b#npm:3.21.0",
+          {
+            "packageLocation": "./.yarn/__virtual__/tsutils-virtual-2e6534409c/0/cache/tsutils-npm-3.21.0-347e6636c5-1843f4c1b2.zip/node_modules/tsutils/",
+            "packageDependencies": [
+              [
+                "tsutils",
+                "virtual:806930d5d7c33caf2b1f524d53c537effdcf03b34cceae2e9b02460d442a138d5159dfa0d5c8f13dfc3efb8979a54cbe08297b10a374c0c13e5a72d61f097c4b#npm:3.21.0"
+              ],
+              [
+                "@types/typescript",
+                null
+              ],
+              [
+                "tslib",
+                "npm:1.14.1"
+              ],
+              [
+                "typescript",
+                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+              ]
+            ],
+            "packagePeers": [
+              "@types/typescript",
+              "typescript"
+            ],
+            "linkType": "HARD"
+          }
+        ],
+        [
           "virtual:a6ade0a092425213ffb5dfd3f742499ca77cbdf8f493147d7210c27c9cc6bf41edf7d2e006298287873ff7df49994a50a8d11b40f96b1ba97077b0c6d093aadd#npm:3.21.0",
           {
             "packageLocation": "./.yarn/__virtual__/tsutils-virtual-9234e9c1f1/0/cache/tsutils-npm-3.21.0-347e6636c5-1843f4c1b2.zip/node_modules/tsutils/",
@@ -17132,7 +17231,7 @@
               ],
               [
                 "typescript",
-                "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "packagePeers": [
@@ -17231,6 +17330,19 @@
               [
                 "typescript",
                 "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=7ad353"
+              ]
+            ],
+            "linkType": "HARD"
+          }
+        ],
+        [
+          "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353",
+          {
+            "packageLocation": "./.yarn/cache/typescript-patch-387d77a6ef-7e2b9a9f4a.zip/node_modules/typescript/",
+            "packageDependencies": [
+              [
+                "typescript",
+                "patch:typescript@npm%3A4.7.2#~builtin<compat/typescript>::version=4.7.2&hash=7ad353"
               ]
             ],
             "linkType": "HARD"

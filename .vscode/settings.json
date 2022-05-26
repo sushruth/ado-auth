@@ -10,14 +10,14 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-	"editor.formatOnSave": true,
-	"editor.insertSpaces": false,
-	"editor.tabSize": 2,
-	"prettier.useEditorConfig": true,
-	"typescript.preferences.quoteStyle": "single",
-	"javascript.preferences.quoteStyle": "single",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": false,
+  "editor.tabSize": 2,
+  "prettier.useEditorConfig": true,
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
   "prettier.singleQuote": true,
   "cSpell.words": [
     "authrc"
-  ],
+  ]
 }
